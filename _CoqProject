@@ -1,0 +1,16 @@
+INSTALLDEFAULTROOT = comm 
+ -R comm bpf.comm 
+ -R dxcomm bpf.dxcomm 
+ -R model bpf.model 
+ -R verifier bpf.verifier 
+ -R isolation bpf.isolation 
+ -R monadicmodel bpf.monadicmodel 
+ -R monadicmodel2 bpf.monadicmodel2 
+ -R dxmodel bpf.dxmodel 
+ -R clight bpf.clight 
+ -R clightlogic bpf.clightlogic 
+ -R simulation bpf.simulation 
+ -R equivalence bpf.equivalence 
+ -R example bpf.example 
+ -R jit bpf.jit 
+ -R /home/shyuan/GitLab/CompCertBin/compcert compcert
