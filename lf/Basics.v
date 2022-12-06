@@ -107,11 +107,6 @@ Definition next_weekday (d:day) : day :=
     [Compute] to evaluate a compound expression involving
     [next_weekday]. *)
 
-Compute (next_weekday friday).
-(* ==> monday : day *)
-
-Compute (next_weekday (next_weekday saturday)).
-(* ==> tuesday : day *)
 
 (** (We show Coq's responses in comments, but, if you have a
     computer handy, this would be an excellent moment to fire up the
@@ -382,24 +377,14 @@ Qed.
     thing it computes. The [Check] command asks Coq to print the type
     of an expression. *)
 
-Check true.
-(* ===> true : bool *)
 
 (** If the expression after [Check] is followed by a colon and a type,
     Coq will verify that the type of the expression matches the given
     type and halt with an error if not. *)
 
-Check true
-  : bool.
-Check (negb true)
-  : bool.
-
 (** Functions like [negb] itself are also data values, just like
     [true] and [false].  Their types are called _function types_, and
     they are written with arrows. *)
-
-Check negb
-  : bool -> bool.
 
 (** The type of [negb], written [bool -> bool] and pronounced
     "[bool] arrow [bool]," can be read, "Given an input of type
@@ -510,8 +495,6 @@ End Playground.
 
 Definition b : bool := true.
 
-Check Playground.b : rgb.
-Check b : bool.
 
 (* ================================================================= *)
 (** ** Tuples *)
@@ -533,9 +516,6 @@ Inductive bit : Type :=
 Inductive nybble : Type :=
   | bits (b0 b1 b2 b3 : bit).
 
-Check (bits B1 B0 B1 B0)
-  : nybble.
-
 (** The [bits] constructor acts as a wrapper for its contents.
     Unwrapping can be done by pattern-matching, as in the [all_zero]
     function which tests a nybble to see if all its bits are [B0].  We
@@ -548,10 +528,6 @@ Definition all_zero (nb : nybble) : bool :=
   | (bits _ _ _ _) => false
   end.
 
-Compute (all_zero (bits B1 B0 B1 B0)).
-(* ===> false : bool *)
-Compute (all_zero (bits B0 B0 B0 B0)).
-(* ===> true : bool *)
 
 End TuplePlayground.
 
@@ -669,9 +645,6 @@ End NatPlayground.
     the "unary" notation defined by the constructors [S] and [O].  Coq
     prints numbers in decimal form by default: *)
 
-Check (S (S (S (S O)))).
-(* ===> 4 : nat *)
-
 Definition minustwo (n : nat) : nat :=
   match n with
   | O => O
@@ -679,15 +652,8 @@ Definition minustwo (n : nat) : nat :=
   | S (S n') => n'
   end.
 
-Compute (minustwo 4).
-(* ===> 2 : nat *)
-
 (** The constructor [S] has the type [nat -> nat], just like functions
     such as [pred] and [minustwo]: *)
-
-Check S        : nat -> nat.
-Check pred     : nat -> nat.
-Check minustwo : nat -> nat.
 
 (** These are all things that can be applied to a number to yield a
     number.  However, there is a fundamental difference between [S]
@@ -746,9 +712,6 @@ Fixpoint plus (n : nat) (m : nat) : nat :=
   end.
 
 (** Adding three to two now gives us five, as we'd expect. *)
-
-Compute (plus 3 2).
-(* ===> 5 : nat *)
 
 (** The steps of simplification that Coq performs can be
     visualized as follows: *)
@@ -836,8 +799,6 @@ Notation "x - y" := (minus x y)
 Notation "x * y" := (mult x y)
                        (at level 40, left associativity)
                        : nat_scope.
-
-Check ((0 + 1) + 1) : nat.
 
 (** (The [level], [associativity], and [nat_scope] annotations
     control how these notations are treated by Coq's parser.  The
@@ -1102,12 +1063,6 @@ Qed.
     are lemmas about multiplication that are proved in the standard
     library.  (We will see how to prove them ourselves in the next
     chapter.) *)
-
-Check mult_n_O.
-(* ===> forall n : nat, 0 = n * 0 *)
-
-Check mult_n_Sm.
-(* ===> forall n m : nat, n * m + n = n * S m *)
 
 (** We can use the [rewrite] tactic with a previously proved theorem
     instead of a hypothesis from the context. If the statement of the
