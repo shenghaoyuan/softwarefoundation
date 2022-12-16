@@ -588,6 +588,7 @@ Proof.
     assumption.
 Qed.
 
+
 (** [] *)
 
 (** **** Exercise: 3 stars, standard, optional (more_exercises)

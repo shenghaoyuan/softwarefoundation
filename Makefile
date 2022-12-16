@@ -1,7 +1,7 @@
 COQMAKEFILE := coq_makefile
 COQEXTRAFLAGS := COQEXTRAFLAGS = '-w all,-extraction,-disj-pattern-notation'
 
-LF= Basics.v Induction.v
+LF= Basics.v Induction.v Lists.v Poly.v
 
 SFDIR = $(addprefix lf/, $(LF))
    
