@@ -1032,7 +1032,7 @@ Proof.
   (* move the hypothesis into the context: *)
   intros H.
   (* rewrite the goal using the hypothesis: *)
-  rewrite -> H.
+  rewrite <- H.
   reflexivity.  Qed.
 
 (** The first line of the proof moves the universally quantified
