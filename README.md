@@ -7,7 +7,7 @@ This repo is just for personal SF coq exercises.
 | --------- | ---------------------- |
 | Basics    | Y(exercise unfinished) |
 | Induction | Y                      |
-| Lists     |                        |
+| Lists     | Y                      |
 | Poly      |                        |
 | Tactics   |                        |
 | Logic     |                        |
