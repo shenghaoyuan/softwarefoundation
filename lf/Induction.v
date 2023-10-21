@@ -891,8 +891,7 @@ Fixpoint normalize (b:bin) : bin
 
 Theorem bin_nat_bin : forall b, nat_to_bin (bin_to_nat b) = normalize b.
 Proof.
-  (* FILL IN HERE *) . Admitted.
-
+  (* FILL IN HERE *) Admitted.
 (** [] *)
 
 (* 2023-08-23 11:29 *)
