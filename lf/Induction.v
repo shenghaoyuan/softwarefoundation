@@ -881,8 +881,12 @@ Abort.
     end of the [bin] and process each bit only once. Do not try to
     "look ahead" at future bits. *)
 
-Fixpoint normalize (b:bin) : bin
-  (* REPLACE THIS LINE WITH ":= _your_definition_ ." *). Admitted.
+Fixpoint normalize (b:bin) : bin :=
+  match b with
+  | Z => Z
+  | B0 n => double_bin (normalize n)
+  | B1 n => incr (double_bin (normalize n))
+  end.
 
 (** It would be wise to do some [Example] proofs to check that your definition of
     [normalize] works the way you intend before you proceed. They won't be graded,
@@ -901,9 +905,42 @@ Fixpoint normalize (b:bin) : bin
     Hint 2: Lemma [double_incr_bin] that you proved above will be
     helpful, too.*)
 
+Lemma nat_to_bin_double:
+  forall n,
+    nat_to_bin (double n) = double_bin (nat_to_bin n).
+Proof.
+  induction n.
+  - simpl. auto.
+  - simpl. rewrite double_incr_bin. rewrite <- IHn. auto.
+Qed.
+
+
 Theorem bin_nat_bin : forall b, nat_to_bin (bin_to_nat b) = normalize b.
 Proof.
-  (* REPLACE THIS LINE WITH ":= _your_definition_ ." *) Admitted.
+  intros.
+  induction b.
+  - simpl. reflexivity.
+  - simpl.
+    rewrite <- IHb.
+    destruct (bin_to_nat b).
+    + simpl. auto.
+    + simpl.
+      rewrite double_incr_bin.
+       (**r here we need nat_to_bin (double_nat n) = double_bin (nat_to_bin n)*)
+      rewrite <- nat_to_bin_double.
+      rewrite double_plus.
+      f_equal.
+      rewrite <- plus_n_Sm.
+      rewrite add_0_r.
+      simpl.
+      f_equal.
+  - simpl.
+    rewrite <- IHb.
+    rewrite <- nat_to_bin_double.
+    rewrite double_plus.
+    rewrite add_0_r.
+    f_equal.
+Qed.
 
 (** [] *)
 
