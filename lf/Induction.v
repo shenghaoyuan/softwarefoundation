@@ -871,7 +871,8 @@ Abort.
     "look ahead" at future bits. *)
 
 Fixpoint normalize (b:bin) : bin
-  (* REPLACE THIS LINE WITH ":= _your_definition_ ." *) . Admitted.
+  (* REPLACE THIS LINE WITH ":= _your_definition_ ." *)
+. Admitted.
 
 
 (** It would be wise to do some [Example] proofs to check that your definition of
@@ -891,7 +892,8 @@ Fixpoint normalize (b:bin) : bin
 
 Theorem bin_nat_bin : forall b, nat_to_bin (bin_to_nat b) = normalize b.
 Proof.
-  (* FILL IN HERE *) Admitted.
+  (* FILL IN HERE *)
+  Admitted.
 (** [] *)
 
 (* 2023-08-23 11:29 *)
