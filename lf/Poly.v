@@ -1180,7 +1180,7 @@ Proof. reflexivity. Qed.
     [x]. *)
 
 Definition plus (n m : cnat) : cnat :=
-  fun (X : Type) (succ : X -> X) (x : X) => n X succ (m X succ x).
+  fun (X : Type) (succ : X -> X) (x : X) => m X succ (n X succ x).
 
 Example plus_1 : plus zero one = one.
 Proof. reflexivity. Qed.
@@ -1233,8 +1233,18 @@ Proof. reflexivity. Qed.
     But again, you cannot pass [cnat] itself as the type argument.
     Finding the right type can be tricky. *)
 
+Definition mult2 (n: cnat) : cnat :=
+  fun (X : Type) (succ : X->X)(x : X) => n X (n X succ) x.
+
+Definition mult3 (n: cnat) : cnat :=
+  fun (X : Type) (succ : X->X)(x : X) => n X (n X (n X succ)) x.
+
+(**r
+n^m repeats (n X) m times where (n X) is `succ` and succ is `base`.
+ *)
+
 Definition exp (n m : cnat) : cnat :=
-  fun (X : Type) (succ : X -> X) (x : X) => (m (X -> X)) (n X) succ x.
+  fun (X : Type) (succ : X -> X) (x : X) => (m (X -> X) (n X) succ) x.
 
 Example exp_1 : exp two two = plus two two.
 Proof. reflexivity. Qed.
