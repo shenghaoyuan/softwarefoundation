@@ -1377,11 +1377,10 @@ Proof.
       inversion H.
   - destruct c eqn:Ec.
     + intros H1.
-      simpl in H1.
-      inversion H1.
+      reflexivity.
     + intros H2.
       simpl in H2.
-      inversion H2.
+      auto.
   Qed.
 (** [] *)
 

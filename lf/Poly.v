@@ -1126,8 +1126,8 @@ Definition manual_grade_for_informal_proof : option (nat*string) := None.
     parameter and returns [f] iterated [n] times. *)
 
 Module Church.
-Definition cnat := forall X : Type, (X -> X) -> X -> X.
-
+Definition cnat := forall X : Type, (X -> X) -> X(*base*) -> X.
+Print nat.
 (** Let's see how to write some numbers with this notation. Iterating
     a function once should be the same as just applying it.  Thus: *)
 
@@ -1228,7 +1228,7 @@ Proof. (* FILL IN HERE *) Proof. reflexivity. Qed.
 Definition plus (n m : cnat) : cnat
   (* REPLACE THIS LINE WITH ":= _your_definition_ ." *)
 := fun (X : Type) (succ : X -> X) (x : X) => n X succ (m X succ x).
-
+Print cnat.
 Example plus_1 : plus zero one = one.
 Proof. (* FILL IN HERE *) Proof. reflexivity. Qed.
 
