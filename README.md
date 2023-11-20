@@ -9,7 +9,7 @@ This repo is just for personal SF coq exercises.
 | Induction | Y                      |                   |
 | Lists     | Y                      |                   |
 | Poly      | Y                      | *Church numerals* |
-| Tactics   |                        |                   |
-| Logic     |                        |                   |
-| IndProp   |                        |                   |
+| Tactics   | Y                      |                   |
+| Logic     | Y                      |                   |
+| IndProp   | Y                      |                   |
 
